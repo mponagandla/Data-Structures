@@ -1,0 +1,1 @@
+This is just a practice project to learn to implement data structures in python 3

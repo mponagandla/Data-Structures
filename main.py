@@ -1,20 +1,40 @@
 
 
-class Tree:
+class TreeNode:
     def __init__(self, data):
         self.left = None
         self.right = None
         self.data = data
 
-root = Tree()
-print("Please enter the left node value")
-left_node = Tree(input())
-print("Please enter the right node value")
-right_node = Tree(input())
-root.left = id(left_node)
-root.right = id(right_node)
+    def insert(self,data):
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = TreeNode(data)
+                else:
+                    self.left.insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = TreeNode(data)
+                else: self.right.insert(data)
 
-#print("Left node address : {}" % id(left_node) )
-#print("Right node address : {}" % id(right_node) )
-print("Root left node address : {}" % root.left )
-print("Root right node address : {}" % root.right )
+        else:
+            self.data = data
+
+    def printTree(self):
+        if self.left:
+            self.left.printTree()
+
+        print(self.data)
+        print('\n')
+        if self.right:
+            self.right.printTree()
+
+root = TreeNode(input())
+root.insert(input())
+root.insert(input())
+root.insert(input())
+root.insert(input())
+root.printTree()
+
+
