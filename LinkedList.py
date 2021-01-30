@@ -42,7 +42,9 @@ class LinkedList:
                 arrow = "-->"
             else:
                 arrow = "<--"
-            llstr += str(itr.data) + arrow
+            if itr.next != None:
+                llstr += str(itr.data) + arrow
+            else: llstr += str(itr.data)
             itr = itr.next
         print(llstr)
 
@@ -55,19 +57,22 @@ class LinkedList:
         while itr:
             if rev ==False:
                 arrow = "-->"
-            else: arrow = "<--"
-            llstr += str(itr.data) + arrow
-
+            else:
+                arrow = "<--"
+            if itr.prev != None:
+                llstr += str(itr.data) + arrow
+            else: llstr += str(itr.data)
             itr = itr.prev
         print(llstr)
 
 
 if __name__ == '__main__':
     ll = LinkedList()
+    ll.insertAtStart(13)
     ll.insertAtStart(10)
     ll.insertAtStart(11)
     ll.insertAtStart(12)
     ll.insertAtEnd(9)
     #ll.insertAtEnd(10)
-    ll.printRL()
+    ll.printRL(rev = True)
     ll.printLR()
