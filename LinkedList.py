@@ -16,6 +16,7 @@ class LinkedList:
             self.tail = node
         else:
             node = Node(data, self.head)
+            self.head.prev = node
             self.head = node
 
     def insertAtEnd(self, data):
@@ -30,15 +31,34 @@ class LinkedList:
         self.tail = node
 
 
-    def printLL(self):
+    def printLR(self, rev = False):
         if self.head == None:
             print("List Empty")
             return
         llstr = ''
         itr = self.head
         while itr:
-            llstr += str(itr.data) + "-->"
+            if rev == False:
+                arrow = "-->"
+            else:
+                arrow = "<--"
+            llstr += str(itr.data) + arrow
             itr = itr.next
+        print(llstr)
+
+    def printRL(self, rev = False):
+        if self.tail == None:
+            print("List Empty")
+            return
+        llstr = ''
+        itr = self.tail
+        while itr:
+            if rev ==False:
+                arrow = "-->"
+            else: arrow = "<--"
+            llstr += str(itr.data) + arrow
+
+            itr = itr.prev
         print(llstr)
 
 
@@ -49,4 +69,5 @@ if __name__ == '__main__':
     ll.insertAtStart(12)
     ll.insertAtEnd(9)
     #ll.insertAtEnd(10)
-    ll.printLL()
+    ll.printRL()
+    ll.printLR()
