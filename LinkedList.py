@@ -85,16 +85,18 @@ class LinkedList:
         print("Entered node cannot be found")
         return
 
-    def findVal(self,headtrck,val):
-        if headtrck == None:
-            print("List Empty")
-        elif headtrck.data == val:
-                print("Element exists")
-        elif headtrck == self.tail:
-            print("EOL Reached")
-            return
-        else: self.findVal(headtrck.next,val)
-
+    def findVal(self,val):
+        if self.head == None:
+            print("List empty")
+            return False
+        itr = self.head
+        while itr:
+            if itr.data == val:
+                print("Element found")
+                return True
+            itr = itr.next
+        print("Element not found")
+        return False
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -106,4 +108,4 @@ if __name__ == '__main__':
     #ll.insertAtEnd(10)
     ll.printRL(rev = False) # Print from Right to Left
     #ll.printLR()
-    ll.findVal(ll.headtrck,12)
+    ll.findVal(12)
