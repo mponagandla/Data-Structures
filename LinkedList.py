@@ -37,7 +37,7 @@ class LinkedList:
         self.tail = node
 
 
-    def printLR(self,head, rev = False):
+    def printLR(self, rev = False):
         if self.head == None:
             print("List Empty")
             return
@@ -98,14 +98,42 @@ class LinkedList:
         print("Element not found")
         return False
 
+    def deleteItem(self, val):
+        if self.head == None:
+            print("List is Empty")
+            return False
+        itr = self.head
+        while itr:
+            if itr.data == val:
+                # Copying left-side node into prev
+                leftEle = itr.prev
+                rightEle = itr.next
+                # Setting left-side Node to point to the node
+                leftEle.next = rightEle
+                # Setting right-side node to left-side node after
+                rightEle.prev = itr.prev
+                # Deleting the object to free up space
+                del itr
+                print("Item deleted")
+                return True
+            itr = itr.next
+        print("Item not found")
+        return False
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insertAtStart(13)
-    ll.insertAtStart(10)
+    ll.insertAtStart(12)
     ll.insertAtStart(11)
+    ll.insertAtStart(10)
     #ll.insertAtStart(12)
     #ll.insertAtEnd(9)
     #ll.insertAtEnd(10)
-    ll.printRL(rev = False) # Print from Right to Left
-    #ll.printLR()
+    #ll.printRL(rev = False) # Print from Right to Left
+    ll.printLR()
     ll.findVal(12)
+    ll.deleteItem(12)
+    ll.deleteItem(11)
+    #ll.deleteItem(11)
+    ll.printRL()
+    #ll.printLR()
