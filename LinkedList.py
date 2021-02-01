@@ -138,6 +138,20 @@ class LinkedList:
         print("Element not found")
         return False
 
+    def insertValues(self,values = None, left_to_right = True):
+        if values:
+            for val in values:
+                if left_to_right:
+                    self.insertAtEnd(val)
+                else:
+                    self.insertAtStart(val)
+            print("Elements inserted")
+            return True
+        else:
+            print("No elements to insert")
+            return False
+
+
     def printValues(self, direction = True,reverse = False):
         if direction:
             self.printLR(reverse)
@@ -147,13 +161,14 @@ class LinkedList:
 
 if __name__ == '__main__':
     ll = LinkedList()
-    ll.insertAtStart(10)
-    ll.insertAtStart(9)
-    ll.insertAtEnd(11)
-    ll.insertAtEnd(12)
-    ll.printLR()
+    #ll.insertAtStart(10)
+    #ll.insertAtStart(9)
+    #ll.insertAtEnd(11)
+    #ll.insertAtEnd(12)
+    ll.insertValues([9,10,11,12])
+    ll.printValues()
     #ll.printRL(rev = False) # Print from Right to Left
 
     ll.findVal(12)
-    ll.updateVal(14,14)
+    #ll.updateVal(12,14)
     ll.printValues(reverse=True)
