@@ -1,6 +1,5 @@
 import sys
 
-sys.setrecursionlimit(5000)
 
 class Node:
     def __init__(self, data = None, next = None, prev = None):
@@ -159,7 +158,7 @@ class LinkedList:
             self.printRL(reverse)
 
 
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     ll = LinkedList()
     #ll.insertAtStart(10)
     #ll.insertAtStart(9)
@@ -172,3 +171,4 @@ if __name__ == '__main__':
     ll.findVal(12)
     #ll.updateVal(12,14)
     ll.printValues(reverse=True)
+"""
