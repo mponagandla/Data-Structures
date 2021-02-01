@@ -159,7 +159,7 @@ class LinkedList:
 
 
 
-"""if __name__ == '__main__':
+if __name__ == '__main__':
     ll = LinkedList()
     #ll.insertAtStart(10)
     #ll.insertAtStart(9)
@@ -172,4 +172,3 @@ class LinkedList:
     ll.findVal(12)
     #ll.updateVal(12,14)
     ll.printValues(reverse=True)
-"""
