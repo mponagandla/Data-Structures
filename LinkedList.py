@@ -30,16 +30,17 @@ class LinkedList:
             node = Node(data,prev = self.tail)
             self.head = node
             self.tail = node
-            self.headtrck = head
+            self.headtrck = node
             return
         node = Node(data,prev = self.tail)
         self.tail.next = node
         self.tail = node
 
 
+
     def printLR(self, rev = False):
         if self.head == None:
-            print("List Empty")
+            print("List Empty#")
             return
         llstr = ''
         itr = self.head
@@ -56,7 +57,7 @@ class LinkedList:
 
     def printRL(self, rev = False):
         if self.tail == None:
-            print("List Empty")
+            print("List Empty!")
             return
         llstr = ''
         itr = self.tail
@@ -98,42 +99,61 @@ class LinkedList:
         print("Element not found")
         return False
 
-    def deleteItem(self, val):
+    def deleteItem(self,val):
         if self.head == None:
-            print("List is Empty")
+            print("Empty List")
             return False
         itr = self.head
         while itr:
             if itr.data == val:
-                # Copying left-side node into prev
-                leftEle = itr.prev
-                rightEle = itr.next
-                # Setting left-side Node to point to the node
-                leftEle.next = rightEle
-                # Setting right-side node to left-side node after
-                rightEle.prev = itr.prev
-                # Deleting the object to free up space
-                del itr
-                print("Item deleted")
-                return True
-            itr = itr.next
-        print("Item not found")
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                    del itr
+                    print("Deleted")
+                    return True
+                elif itr.prev == None:
+                    self.head = itr.next
+                    rightEle = itr.next
+                    rightEle.prev = None
+                    del itr
+                    print("Deleted")
+                    return True
+                elif itr.next == None:
+                    leftEle = itr.prev
+                    leftEle.next = None
+                    self.tail = itr.prev
+                    del itr
+                    print("Deleted")
+                    return True
+                else:
+                    leftEle = itr.prev
+                    rightEle = itr.next
+                    leftEle.next= rightEle
+                    rightEle.prev = leftEle
+                    print("Deleted")
+                    del itr
+                    return True
+            else: itr = itr.next
+        print("Element not found")
         return False
+
+    def printValues(self, direction = True,reverse = False):
+        if direction:
+            self.printLR(reverse)
+        else:
+            self.printRL(reverse)
+
 
 if __name__ == '__main__':
     ll = LinkedList()
-    ll.insertAtStart(13)
-    ll.insertAtStart(12)
-    ll.insertAtStart(11)
     ll.insertAtStart(10)
-    #ll.insertAtStart(12)
-    #ll.insertAtEnd(9)
-    #ll.insertAtEnd(10)
-    #ll.printRL(rev = False) # Print from Right to Left
+    ll.insertAtStart(9)
+    ll.insertAtEnd(11)
+    ll.insertAtEnd(12)
     ll.printLR()
+    #ll.printRL(rev = False) # Print from Right to Left
+
     ll.findVal(12)
-    ll.deleteItem(12)
-    ll.deleteItem(11)
-    #ll.deleteItem(11)
-    ll.printRL()
-    #ll.printLR()
+    ll.updateVal(14,14)
+    ll.printValues(reverse=True)
