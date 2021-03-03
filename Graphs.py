@@ -56,7 +56,7 @@ class Graph:
                 new_path = self.find_path_shortest(node, end, path)
                 if new_path:
                     if longest is None or len(new_path) > len(longest):
-                        shortest = new_path
+                        longest = new_path
         return longest
 
 if __name__ == '__main__':
