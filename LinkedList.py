@@ -54,7 +54,7 @@ class LinkedList:
             itr = itr.next
         print(llstr)
 
-    def printRL(self, rev = False):
+    def printRL(self, rev = False, json= False):
         if self.tail == None:
             print("List Empty!")
             return
@@ -69,6 +69,7 @@ class LinkedList:
                 llstr += str(itr.data) + arrow
             else: llstr += str(itr.data)
             itr = itr.prev
+
         print(llstr)
 
     def updateVal(self,nodeval, newval):
@@ -137,6 +138,14 @@ class LinkedList:
         print("Element not found")
         return False
 
+    def jsonify(self, list):
+        jsonlist = {}
+        for i in range(len(list)):
+            jsonlist[i] = list[i]
+
+        return jsonlist
+
+
     def insertValues(self,values = None, left_to_right = True):
         if values:
             for val in values:
@@ -165,10 +174,11 @@ if __name__ == '__main__':
     #ll.insertAtStart(9)
     #ll.insertAtEnd(11)
     #ll.insertAtEnd(12)
-    ll.insertValues([9,10,11,12])
-    ll.printValues()
+    #ll.insertValues([9,10,11,12])
+    #ll.printValues()
     #ll.printRL(rev = False) # Print from Right to Left
 
-    ll.findVal(12)
+    #ll.findVal(12)
     #ll.updateVal(12,14)
-    ll.printValues(reverse=True)
+    #ll.printValues(reverse=True)
+    print(ll.jsonify([9,10,11,12]))
