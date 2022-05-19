@@ -26,15 +26,31 @@ class TreeNode:
             self.left.printTree()
 
         print(self.data)
-        print('\n')
+
         if self.right:
             self.right.printTree()
 
-root = TreeNode(input())
-root.insert(input())
-root.insert(input())
-root.insert(input())
-root.insert(input())
-root.printTree()
+    def height(self):
+        lh,rh = 0,0
+        if self.data is None:
+            return 0
+        if self.left:
+            lh = self.left.height()
+        if self.right:
+            rh = self.right.height()
+
+        return 1 + max(lh, rh)
+
+root = TreeNode(9)
+root.insert(11)
+root.insert(7)
+root.insert(6)
+root.insert(10)
+root.insert(12)
+root.insert(5)
+root.insert(8)
+root.insert(7)
+# root.printTree()
+print(root.height())
 
 
